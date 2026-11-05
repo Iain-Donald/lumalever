@@ -1,2 +1,8 @@
 # lumalever
 Colorspace transformations and other light tools. 
+
+### ///// lib_lumalever
+
+- lumalever.h (main library)
+    - color.c & color.h // cie xyz, cielab, and cieluv color translations. Other related translations. While all are based on a 3-variable color struct, each has their own context of range, units, and endpoint meaning. So each colorspace gets their own struct. 
+    - lightmeter.c & lightmeter.h // Calculates EV (exposure value) for use with light sensors for cameras. Takes either a single luminance value 0-255 with target 127, or a luminance uint8_t array. There is a function for both 1D and 2D array contexts. The 2D context takes line width to generate a Gaussian ellipse style roll-off curve with n steps. This is center-weighted average metering. This along with spot metering and partial area metering allows for the advanced evaluative metering (eval). The spot and partial area can be placed and placed or sized respectively. Then each method can be used to make weighted inputs to evaluative metering. A user could now have subject based metering on a touch-screen device for example. 
